@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>7EL-USER</title>
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+
+{% block header %}
+<ul>
+    {% if request.user.is_authenticated %}
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+    <li>
+        <h5>hey, welcome to dashboard</h5>
+        <h6>plz vote for:</h6>
+        <a href="{% url 'polls:index' %}">Our Survey</a>
+    </li>
+    {% else %}
+    <li><a href="{% url 'login' %}">Login</a></li>
+    <li><a href="{% url 'user_registration' %}">Register Account</a></li>
+    {% endif %}
+</ul>
+{% endblock %}
+
+
+</html>
